@@ -14,3 +14,5 @@ Tests for the otak mini server
   - Uso redis
   - Dentro de Portainer no funciona
   - Fuera de Portainer sí
+- Pruebas adicionales
+  - Poner portainer detrás de caddy
