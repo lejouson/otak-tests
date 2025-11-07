@@ -1,0 +1,21 @@
+name: redis
+
+configs:
+  test-config:
+    content: |
+      {
+        my_config test
+      }
+
+      my_config, :86 {
+        test config
+        config
+      }
+
+services:
+  redis:
+    image: redis
+    restart: unless-stopped
+    configs:
+      - source: test-config
+        target: /etc/test-config.json
