@@ -1,0 +1,31 @@
+configs:
+  caddyfile:
+    content: |
+      # Caddyfile
+      {
+        default_sni otak
+      }
+
+      otak, :443 {
+        respond "Hello secure Caddy!"
+        tls internal
+        log
+      }
+
+services:
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
+    configs:
+      - source: caddyfile
+        target: /etc/caddy/Caddyfile
+    ports:
+      - 8080:80
+      - 8443:443
+    volumes:
+      - caddy_data:/data
+      - caddy_config:/config
+
+volumes:
+  caddy_data:
+  caddy_config:
